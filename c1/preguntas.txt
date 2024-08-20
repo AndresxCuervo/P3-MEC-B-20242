@@ -1,0 +1,108 @@
+##¿Cuál de las siguientes afirmaciones describe mejor el concepto de encapsulamiento en Java?
+
+~El encapsulamiento permite que los datos y los métodos que operan sobre esos datos estén agrupados en una sola entidad, pero no oculta los detalles internos de la implementación
+=El encapsulamiento permite agrupar datos y métodos dentro de una clase y controlar el acceso a esos datos mediante modificadores de acceso, ocultando detalles internos de la implementación.
+~El encapsulamiento es un mecanismo que permite que las clases hereden comportamientos y atributos de otras clases
+~El encapsulamiento se refiere a la habilidad de una clase para crear múltiples instancias
+
+##¿Cuál es la diferencia principal entre un constructor y un método en Java?
+
+~Un constructor puede devolver un valor, mientras que un método no
+=Un constructor tiene el mismo nombre que la clase y no tiene tipo de retorno, mientras que un método puede tener un nombre diferente y un tipo de retorno.
+~Un método puede ser llamado automáticamente cuando se crea un objeto, mientras que un constructor debe ser llamado explícitamente
+~Un constructor puede ser privado, mientras que los métodos siempre deben ser públicos
+
+##El encapsulamiento en Java se implementa utilizando las palabras clave public, private y protected para controlar el acceso a los atributos y métodos de una clase.{T}
+
+##¿Cuál de las siguientes afirmaciones describe correctamente el proceso de instanciación de un objeto en Java y lo que sucede a nivel de memoria?
+
+~La instanciación de un objeto en Java se realiza creando una nueva clase en memoria y no se reserva espacio para los datos del objeto
+=Al instanciar un objeto, Java crea un nuevo espacio en memoria para el objeto, inicializa sus atributos con valores predeterminados y llama al constructor de la clase.
+~La instanciación de un objeto en Java no requiere la llamada a un constructor y el espacio en memoria se asigna solo para los métodos
+~La instanciación de un objeto en Java se realiza únicamente cuando se utiliza un método estático de la clase
+
+## ¿Una clase interna en Java cómo puede acceder a un atributo privado de su clase externa?
+
+~Una clase interna no puede acceder a los atributos privados de su clase externa
+~Una clase interna puede acceder a los atributos privados de su clase externa porque se encuentra en el mismo archivo de código fuente
+=Una clase interna puede acceder a los atributos privados de su clase externa debido a que está asociada directamente con la instancia de la clase externa.
+~Una clase interna puede acceder a los atributos privados de su clase externa solo si utiliza la palabra clave `static`
+
+## ¿Qué afirmación describe mejor la sobreescritura de métodos (overriding) en Java?
+
+=La sobreescritura de métodos permite que una subclase modifique el comportamiento de un método heredado de la superclase con una nueva implementación utilizando la anotación `@Override`.
+~La sobreescritura de métodos permite que una subclase cree un nuevo método que no existe en la superclase con el mismo nombre pero con diferentes parámetros
+~La sobreescritura de métodos impide que la subclase acceda a métodos de la superclase y solo permite la creación de nuevos métodos en la subclase
+~La sobreescritura de métodos es una técnica para cambiar el tipo de retorno de un método heredado en la subclase
+
+## En Java, un constructor puede devolver un valor, a diferencia de un método que debe devolver un tipo de valor específico.{F}
+
+
+## ¿Cómo se utiliza la herencia para modificar el comportamiento del método hacerSonido en la subclase Perro?
+
+~La herencia se utiliza para definir un nuevo método en la subclase Perro que no existe en la superclase Animal
+=La herencia permite que la subclase Perro sobrescriba el método hacerSonido de la superclase Animal utilizando la anotación @Override.
+~La herencia se utiliza para ocultar el método hacerSonido en la subclase Perro y evitar que sea accesible
+~La herencia permite que la subclase Perro llame al método hacerSonido de la superclase Animal sin modificarlo
+
+public class Animal {
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido.");
+    }
+}
+public class Perro extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra.");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Perro miPerro = new Perro();
+        miPerro.hacerSonido();
+    }
+}
+
+
+## ¿Qué sucede cuando se llama al método dibujar en el objeto figura en el siguiente código?
+
+~El método dibujar no se ejecuta porque la clase Figura es abstracta y no tiene una implementación
+~El método dibujar de la clase Figura se ejecuta, pero la implementación concreta de Círculo se ignora
+=Se ejecuta el método dibujar de la clase Círculo debido a la implementación concreta proporcionada en la subclase.
+~El método dibujar causa un error en tiempo de compilación porque no se ha definido en Círculo
+
+abstract class Figura {
+    abstract void dibujar();
+}
+class Círculo extends Figura {
+    @Override
+    void dibujar() {
+        System.out.println("Dibujando un círculo.");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Figura figura = new Círculo();
+        figura.dibujar();
+    }
+}
+
+## ¿Cuál de las siguientes afirmaciones es correcta sobre el método `sumar` en la clase `Matematica`?
+
+~El método `sumar` es un método de instancia que debe ser llamado en un objeto de la clase `Matematica`
+=El método `sumar` es un método estático y se llama directamente usando el nombre de la clase `Matematica`.
+~El método `sumar` no devuelve un valor y solo imprime el resultado de la suma en la consola
+~El método `sumar` es un método privado y solo puede ser llamado desde dentro de la clase `Matematica`
+
+public class Matematica {
+    public static int sumar(int a, int b) {
+        return a + b;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        int resultado = Matematica.sumar(5, 3);
+        System.out.println("El resultado de la suma es: " + resultado);
+    }
+}
+
