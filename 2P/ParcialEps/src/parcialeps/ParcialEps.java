@@ -13,12 +13,16 @@ public class ParcialEps {
     public static void main(String[] args) {
         JFrame ventana = new JFrame("EPS");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setSize(600, 400);
+        ventana.setSize(600, 800);
         ventana.setLayout(new BorderLayout());
 
         JPanel panelIzquierdo = new JPanel();
         panelIzquierdo.setPreferredSize(new Dimension(200, 0));
-        panelIzquierdo.setLayout(new GridLayout(7, 1));
+        
+        JPanel panelSuperiorIzquierdo = new JPanel();
+        panelSuperiorIzquierdo.setPreferredSize(new Dimension (200,500));
+        panelSuperiorIzquierdo.setLayout(new GridLayout(6, 1));
+        
         
         JLabel etiquetaCedula = new JLabel("Número de cédula:");
         JTextField campoCedula = new JTextField();
@@ -31,19 +35,22 @@ public class ParcialEps {
         String[] servicios = {"Consulta medicina general", "Consulta medicina especializada", "Prueba de laboratorio", "Imágenes diagnósticas"};
         JComboBox<String> comboServicio = new JComboBox<>(servicios);
         
+        panelSuperiorIzquierdo.add(etiquetaCedula);
+        panelSuperiorIzquierdo.add(campoCedula);
+        panelSuperiorIzquierdo.add(etiquetaCategoria);
+        panelSuperiorIzquierdo.add(comboCategoria);
+        panelSuperiorIzquierdo.add(etiquetaServicio);
+        panelSuperiorIzquierdo.add(comboServicio);
+        
+        JPanel panelInferiorIzquierdo = new JPanel ();
+        panelInferiorIzquierdo.setLayout(new GridLayout(1, 2));
+        
         JButton Registrar = new JButton("Registrar");
         JLabel etiquetaHora = new JLabel();
         
-        panelIzquierdo.add(etiquetaCedula);
-        panelIzquierdo.add(campoCedula);
-        panelIzquierdo.add(etiquetaCategoria);
-        panelIzquierdo.add(comboCategoria);
-        panelIzquierdo.add(etiquetaServicio);
-        panelIzquierdo.add(comboServicio);
-        panelIzquierdo.add(Registrar);
-        panelIzquierdo.add(etiquetaHora);
+        panelInferiorIzquierdo.add(Registrar);
+        panelInferiorIzquierdo.add(etiquetaHora);
         
-        /*etiquetaHora.setPreferredSize(new Dimension(100, 30));*/
         
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
@@ -59,12 +66,15 @@ public class ParcialEps {
         panelDerecho.setLayout(new BorderLayout());
 
         JPanel panelSuperiorDerecho = new JPanel();
-        panelSuperiorDerecho.setPreferredSize(new Dimension(0, 133));
+        panelSuperiorDerecho.setPreferredSize(new Dimension(0, 266));
 
         JPanel panelInferiorDerecho = new JPanel();
 
         panelDerecho.add(panelSuperiorDerecho, BorderLayout.NORTH);
         panelDerecho.add(panelInferiorDerecho, BorderLayout.CENTER);
+        
+        panelIzquierdo.add(panelSuperiorIzquierdo, BorderLayout.NORTH);
+        panelIzquierdo.add(panelInferiorIzquierdo, BorderLayout.CENTER);
 
         ventana.add(panelIzquierdo, BorderLayout.WEST);
         ventana.add(panelDerecho, BorderLayout.CENTER);
